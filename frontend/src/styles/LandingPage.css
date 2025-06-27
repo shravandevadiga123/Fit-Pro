@@ -1,0 +1,65 @@
+.landing-container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+}
+
+.landing-left {
+  flex: 0 0 55%;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--bg-color);
+}
+
+.landing-right {
+  flex: 0 0 28.2%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fffdf8;
+}
+
+.landing-left h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.landing-left p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 60%;
+}
+
+.start-button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--button-color); /* Dark navy */
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.start-button:hover {
+  background-color: var(--button-hover); /* orange on hover */
+}
+
+.fitpro-logo {
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}

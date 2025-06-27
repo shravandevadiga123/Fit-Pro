@@ -1,0 +1,162 @@
+.members-wrapper {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 5px auto 1rem 35px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  min-height: 70vh;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 100%;
+  width: 1300px;
+  min-width: 1000px;
+  height: 800px
+}
+
+.members-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search-bar {
+  position: relative;
+  width: 280px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #ff7a00, #ff9723);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.add-btn:hover {
+  background-color: #e65c00;
+  transform: translateY(-1px);
+}
+
+.member-form-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.member-form-card input,
+.member-form-card select {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  min-width: 60px;
+  flex: 1;
+  max-width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.member-form-card button {
+  background: #3474db;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.member-form-card button:hover {
+  background: #255bb5;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.members-table th,
+.members-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e2e2;
+  text-align: center;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+.members-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.members-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.members-table td .actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.members-table button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.members-table .delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.members-table .delete:hover {
+  background-color: #c0392b;
+}
+
+.members-table .edit {
+  background-color: #3498db;
+  color: white;
+}
+
+.members-table .edit:hover {
+  background-color: #2c80b4;
+}
+
+

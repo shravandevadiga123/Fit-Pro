@@ -1,0 +1,59 @@
+/* Full height root setup */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make main layout content stretch fully */
+.dashboard-home {
+  position: absolute;
+  top: 56px; /* height of your top navbar */
+  left: 250px; /* width of your sidebar */
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #f9f9f9, #eaeaea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+/* Card */
+.welcome-card {
+  background-color: white;
+  padding: 3rem 4rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.welcome-card h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Highlight */
+.welcome-card h1 span {
+  color: #e65c00;
+}
+
+/* Description */
+.welcome-card p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Tagline */
+.tagline {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #888;
+}

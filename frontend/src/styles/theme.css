@@ -1,0 +1,9 @@
+:root {
+  --bg-color: #f5f0e6; /* Cream background */
+  --primary-text: #1c1f26; /* FitPro text color (dark navy/black) */
+  --button-color: #1c1f26; /* Dumbbell orange */
+  --button-hover: #e65c00;
+  --secondary-bg: #fffdf8;
+  --border-radius: 6px;
+  --font-family: 'Segoe UI', sans-serif;
+}
