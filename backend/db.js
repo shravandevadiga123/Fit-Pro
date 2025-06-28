@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   ssl: {
-    ca: fs.readFileSync(process.env.DB_CA),
+    ca: process.env.DB_CA, // No fs.readFileSync
   },
 });
 
