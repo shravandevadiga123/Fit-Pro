@@ -34,6 +34,11 @@ app.use("/api/auth", authRoutes);
   }
 })();
 
+//pinging route 
+app.get('/', (req, res) => {
+  res.status(200).send('Backend is alive!');
+});
+
 // ✅ Root Route (for testing)
 app.get("/api", (req, res) => {
   res.send("FitPro Manager backend is working 🎉");
