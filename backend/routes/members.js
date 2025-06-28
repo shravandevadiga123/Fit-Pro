@@ -89,7 +89,7 @@ router.delete('/:id', authenticate, async (req, res) => {
 // ✅ Update member (protected)
 router.patch('/:id', authenticate, async (req, res) => {
   const { id } = req.params;
-  const { name, age, gender, phone, email } = req.body;
+  const { name, age, gender, phone, email, address } = req.body;
 
   const fields = [];
   const values = [];
@@ -113,6 +113,10 @@ router.patch('/:id', authenticate, async (req, res) => {
   if (email) {
     fields.push('email = ?');
     values.push(email);
+  }
+  if (address) {
+    fields.push('address = ?');
+    values.push(address);
   }
 
   if (fields.length === 0) {
