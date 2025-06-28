@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
       [username, email, hashedPassword, 0, verificationToken]
     );
 
-    const verificationLink = `http://localhost:5006/api/auth/verify?token=${verificationToken}`;
+    const verificationLink = `${process.env.BASE_URL}/api/auth/verify?token=${verificationToken}`;
 
     await transporter.sendMail({
       to: email,
@@ -127,7 +127,7 @@ router.post("/request-reset", async (req, res) => {
       [token, expiry, hashedPassword, email]
     );
 
-    const resetLink = `http://localhost:5006/api/auth/confirm-reset/${token}`;
+    const resetLink = `${process.env.BASE_URL}/api/auth/confirm-reset/${token}`;
 
     await transporter.sendMail({
       from: `"FitPro Manager" <${process.env.EMAIL_USER}>`,
