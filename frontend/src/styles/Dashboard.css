@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow:hidden;
 }
 
 
@@ -21,7 +21,7 @@ html, body {
   top: 56px; /* navbar height */
   left: 0;
   padding: 2rem 1rem;
-  overflow-y: auto;
+  overflow-y: hidden;
   z-index: 99;
 }
 
@@ -35,23 +35,17 @@ html, body {
   margin-top: -10px;
   margin-right: 0;
   overflow: hidden;
-}
-
-.dashboard-content {
-  margin-left: 220px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
   width: calc(100vw - 220px); /* prevent width overflow */
 }
+
 
 /* Main content area below navbar */
 
 .dashboard-content main {
   height: calc(100vh - 56px);  /* Full height minus navbar */
   padding: 0;
-  margin: 0;
+  margin: 0px;
+  margin-top: 0px;
   overflow: hidden;
   display: flex;
   padding-top: 80px;
@@ -74,13 +68,13 @@ html, body {
     margin-left: 0;
     width: 100%;
     height: auto;
-    overflow: visible;
+    overflow: hidden;
     margin-top: 0;
   }
 
   .dashboard-content main {
     padding-top: 1rem;
-    height: auto;
+    height:auto;
   }
 
   .members-wrapper {

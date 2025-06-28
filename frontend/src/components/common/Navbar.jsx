@@ -14,12 +14,26 @@ const Navbar = () => {
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split(".")[1]));
-        const name = payload?.username || payload?.email?.split("@")[0] || "Admin";
+        const name =
+          payload?.username || payload?.email?.split("@")[0] || "Admin";
         setUsername(name.charAt(0).toUpperCase() + name.slice(1));
       } catch {
         setUsername("Admin");
       }
     }
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".navbar-avatar-wrapper")) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -37,14 +51,14 @@ const Navbar = () => {
           className="navbar-avatar"
           onClick={() => setShowDropdown(!showDropdown)}
         />
-        {showDropdown && (
-          <div className="navbar-dropdown">
-            <p className="username">Hi, <strong>{username}</strong></p>
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        )}
+        <div className={`navbar-dropdown ${showDropdown ? "show" : ""}`}>
+          <p className="username">
+            Hi, <strong>{username}</strong>
+          </p>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
   );
