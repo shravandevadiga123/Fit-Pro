@@ -8,7 +8,7 @@
 - Class creation and attendance tracking
 - Authentication with email verification and password reset
 - Dashboard with modular navigation and user profile
-- Clean UI built with Tailwind CSS and React
+- Clean UI built with React
 
 ## Tech Stack
 
