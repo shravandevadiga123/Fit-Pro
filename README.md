@@ -94,7 +94,3 @@
 9. **Start the frontend React app**  
     ```bash
     npm start
-    
-
-
-   
