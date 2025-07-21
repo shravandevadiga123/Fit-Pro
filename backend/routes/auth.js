@@ -28,7 +28,9 @@ router.post("/signup", async (req, res) => {
 
   try {
     const [existing] = await db.query("SELECT * FROM admins WHERE email = ?", [email]);
-    if (existing.length > 0) return res.status(400).json({ error: "Email already in use." });
+    if (existing.length > 0) {
+      return res.status(400).json({ error: "Email already in use." });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = crypto.randomBytes(32).toString("hex");
@@ -43,7 +45,44 @@ router.post("/signup", async (req, res) => {
     await transporter.sendMail({
       to: email,
       subject: "Verify Your FitPro Manager Account",
-      html: `<h2>Welcome ${username}!</h2><p>Click below to verify your account:</p><a href="${verificationLink}">Verify Account</a>`,
+      html: `
+        <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+          <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center;">
+
+            <div style="margin-bottom: 20px;">
+              <img src="https://fit-pro-manager.vercel.app/Email-logo.png" alt="FitPro Manager Logo" style="max-width: 150px;" />
+            </div>
+
+            <h2 style="color: #2c3e50;">Welcome to FitPro Manager, ${username}!</h2>
+            
+            <p style="font-size: 16px; color: #555; line-height: 1.6;">
+              Thank you for signing up. To get started, please verify your email address by clicking the button below.
+            </p>
+
+            <div style="margin: 30px 0;">
+              <a href="${verificationLink}" 
+                 style="background-color: #1abc9c; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; display: inline-block;">
+                Verify Your Account
+              </a>
+            </div>
+
+            <p style="font-size: 15px; color: #333; line-height: 1.6;">
+              After verification, please visit our website and log in to start managing your fitness operations more effectively.
+            </p>
+
+            <p style="font-size: 13px; color: #888;">
+              If you did not create this account, you can safely ignore this email.
+            </p>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+
+            <p style="font-size: 13px; color: #aaa;">
+              Thanks,<br>The FitPro Manager Team
+            </p>
+
+          </div>
+        </div>
+      `
     });
 
     res.status(201).json({ message: "✅ Signup successful! Please check your email to verify." });
@@ -52,6 +91,7 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
 
 // ✉️ Email Verification Route
 router.get("/verify", async (req, res) => {
@@ -109,7 +149,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+//reset password
 router.post("/request-reset", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: "Email and password required." });
@@ -119,7 +159,7 @@ router.post("/request-reset", async (req, res) => {
     if (admins.length === 0) return res.status(404).json({ error: "No admin with this email." });
 
     const token = crypto.randomBytes(32).toString("hex");
-    const expiry = new Date(Date.now() + 3600000); // 1 hour
+    const expiry = new Date(Date.now() + 60000); // 1 min
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.query(
@@ -133,8 +173,40 @@ router.post("/request-reset", async (req, res) => {
       from: `"FitPro Manager" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "🔐 Confirm Password Reset",
-      html: `<p>You requested to reset your password. Click the link below to confirm:</p>
-             <a href="${resetLink}">Confirm Reset</a>`
+      html: `
+        <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+          <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 10px; padding: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <img src="https://fit-pro-manager.vercel.app/Email-logo.png" alt="FitPro Manager Logo" style="max-width: 150px;" />
+            </div>
+
+            <h2 style="color: #2c3e50; text-align: center;">Reset Your Password</h2>
+
+            <p style="font-size: 16px; color: #555; line-height: 1.6; text-align: center;">
+              You requested to reset your password. To confirm this action, please click the button below within the next hour.
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="${resetLink}" 
+                 style="background-color: #e67e22; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; display: inline-block;">
+                Confirm Password Reset
+              </a>
+            </div>
+
+            <p style="font-size: 15px; color: #333; line-height: 1.6; text-align: center;">
+              If you did not request this reset, you can safely ignore this email and your password will remain unchanged.
+            </p>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+
+            <p style="font-size: 13px; color: #aaa; text-align: center;">
+              Stay Fit,<br>The FitPro Manager Team
+            </p>
+
+          </div>
+        </div>
+      `
     });
 
     res.json({ message: "✅ Reset confirmation link sent to your email." });
@@ -144,6 +216,7 @@ router.post("/request-reset", async (req, res) => {
   }
 });
 
+//reset verify
 router.get("/confirm-reset/:token", async (req, res) => {
   const { token } = req.params;
 
