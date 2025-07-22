@@ -12,8 +12,8 @@ const LandingPage = () => {
         <div className="landing-left">
           <h1>Ready to Level Up Your Fitness Journey?</h1>
           <p>
-            FitPro Manager helps you track members, trainers, classes, and
-            attendance—all in one place. Smart, simple, and built for your gym.
+            FitPro Manager helps you track members, trainers, classes, and attendance—all in one place. 
+            Smart, simple, and built for your gym.
           </p>
           <button className="start-button" onClick={() => setShowModal(true)}>
             Get Started
