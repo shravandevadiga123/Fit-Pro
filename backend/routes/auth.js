@@ -267,5 +267,50 @@ router.get("/is-verified", async (req, res) => {
   }
 });
 
+//upadate username
+router.patch("/update-username", authenticate, async (req, res) => {
+  const { username } = req.body;
+  const adminId = req.admin.id; // ✅ correct variable from auth middleware
+
+  if (!username) {
+    return res.status(400).json({ error: "Username is required." });
+  }
+
+  try {
+    await db.query("UPDATE admins SET username = ? WHERE id = ?", [username, adminId]);
+    res.json({ message: "✅ Username updated successfully." });
+  } catch (err) {
+    console.error("❌ Error updating username:", err);
+    res.status(500).json({ error: "Server error." });
+  }
+});
+
+//update password
+router.patch("/change-password", authenticate, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  const adminId = req.admin.id; // ✅ use same naming
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ error: "Current and new password are required." });
+  }
+
+  try {
+    const [rows] = await db.query("SELECT * FROM admins WHERE id = ?", [adminId]);
+    if (rows.length === 0) return res.status(404).json({ error: "Admin not found." });
+
+    const admin = rows[0];
+
+    const isMatch = await bcrypt.compare(currentPassword, admin.password);
+    if (!isMatch) return res.status(401).json({ error: "Current password is incorrect." });
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await db.query("UPDATE admins SET password = ? WHERE id = ?", [hashedPassword, adminId]);
+
+    res.json({ message: "✅ Password changed successfully." });
+  } catch (err) {
+    console.error("❌ Change password error:", err);
+    res.status(500).json({ error: "Server error." });
+  }
+});
 
 module.exports = router;
