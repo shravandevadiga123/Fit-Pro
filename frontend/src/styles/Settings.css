@@ -1,0 +1,83 @@
+.settings-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.settings-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.settings-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin-bottom: 30px;
+  transition: transform 0.2s;
+}
+
+.settings-card:hover {
+  transform: translateY(-3px);
+}
+
+.settings-form h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.settings-form input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.settings-form input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.settings-form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background: #1c1f26;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.settings-form button:hover {
+  background: #e65c00;
+}
+
+.response-msg {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.response-msg.success {
+  background-color: #e0f7e9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.response-msg.error {
+  background-color: #fdecea;
+  color: #c62828;
+  border: 1px solid #c62828;
+}

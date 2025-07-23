@@ -9,6 +9,7 @@ import Trainers from './pages/Trainers';
 import Classes from './pages/Classes';
 import Attendance from './pages/Attendance'; // ✅ New import
 import "./styles/theme.css";
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="trainers" element={<Trainers />} />
             <Route path="classes" element={<Classes />} />
             <Route path="attendance" element={<Attendance />} /> {/* ✅ New route */}
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
       </Routes>
