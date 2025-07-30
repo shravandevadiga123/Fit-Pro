@@ -45,7 +45,7 @@ const Settings = () => {
           <h3>Update Username</h3>
           <input
             type="text"
-            placeholder="Enter new username"
+            placeholder="Enter the new username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
