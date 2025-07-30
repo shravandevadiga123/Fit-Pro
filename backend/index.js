@@ -34,6 +34,11 @@ app.use("/api/auth", authRoutes);
   }
 })();
 
+//pinging
+app.get('/', (req, res) => {
+  res.status(200).send('Backend is ok!');
+});
+
 //pinging route 
 app.get('/health', (req, res) => {
   res.status(200).send('Backend is alive!');
