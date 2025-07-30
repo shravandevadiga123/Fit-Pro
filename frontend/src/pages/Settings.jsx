@@ -38,7 +38,7 @@ const Settings = () => {
 
   return (
     <div className="settings-wrapper">
-      <h2 className="settings-title">⚙️ Settings</h2>
+      <h2 className="settings-title">Settings</h2>
 
       <div className="settings-card">
         <form className="settings-form" onSubmit={handleUsernameUpdate}>
