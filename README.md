@@ -20,8 +20,7 @@
 
 ## Live Demo
 
-- 🔗 **Frontend:** [https://fit-pro-manager.vercel.app](https://fit-pro-manager.vercel.app)  
-- 🔗 **Backend:** [https://fitpro-backend-tmuj.onrender.com](https://fitpro-backend-tmuj.onrender.com)  
+- 🔗 **Frontend:** [https://fit-pro-d4ed.onrender.com](https://fit-pro-d4ed.onrender.com)  
 - 📂 **GitHub Repo:** [https://github.com/shravandevadiga123/Fit-Pro](https://github.com/shravandevadiga123/Fit-Pro)
 
 ---
